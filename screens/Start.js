@@ -1,18 +1,41 @@
 import React from "react";
-import { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-native";
+import { useState, useEffect } from "react";
+import { View, Text, TextInput, Alert, TouchableOpacity, StyleSheet } from "react-native";
+import user from "../data/user.json"
 
 function Start({navigation}) {
   const [idInput, setIdInput] = useState('');
   const [pwInput, setPwInput] = useState('');
-  const [loginData, setLoginData] = useState({});
+  const [loginKey, setLoginKey] = useState(false);
+
   const submitLoginData = () => {
-    setLoginData({
-      id: idInput,
-      pw: pwInput
+    console.log(idInput, pwInput)
+    let state = false;
+    user.some((data)=>{
+      if(data.id===idInput && data.pw===pwInput){
+        setLoginKey(true);
+        state = true;
+        return true;
+      }
+      else{
+        state = false;
+      }
     })
-    console.log(loginData)
+    if(state===false){
+      console.log('다시 확인하세요')
+      Alert.alert(
+        'login error','아이디와 비밀번호를 확인해주세요.',[
+          {text: 'ok', onPress:()=>{}}
+        ]
+      )
+    }
   }
+  useEffect(()=>{
+    console.log(loginKey);
+    if (loginKey){
+      navigation.navigate('감 캐릭터 고르기');
+    }
+  }, [loginKey])
   return (
     <View style={styles.container}>
       <View style={styles.title}>
