@@ -7,10 +7,19 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import Start from "./screens/Start"
 import SignUp from './screens/SignUp';
-import ProfileChar from './screens/ProfileChar';
+import MakeProfile from './screens/MakeProfile';
 
 export default function App() {
   const Stack = createStackNavigator();
+  const headerOptions = {
+    headerStyle: {
+      backgroundColor: 'orange'
+    },
+    headerTintColor: 'white',
+    headerTitleStyle: {
+      fontSize: 16
+    }
+  }
   return (
     <NavigationContainer>
       <Stack.Navigator 
@@ -20,9 +29,21 @@ export default function App() {
           headerTitleAlign: 'center',
           headerTitleStyle: { fontSize: 20, fontWeight: '500' }
         }}>
-        <Stack.Screen name="Start" component={Start} options={{headerShown: false}}/>
-        <Stack.Screen name="회원 가입하기" component={SignUp}/>
-        <Stack.Screen name="감 캐릭터 고르기" component={ProfileChar}/>
+        <Stack.Screen name="Start" component={Start} options={{
+          headerShown: false
+        }}/>
+        <Stack.Screen name="SignUp" component={SignUp} options={{
+          title: '회원 가입',
+          headerStyle: headerOptions.headerStyle,
+          headerTintColor: headerOptions.headerTintColor,
+          headerTitleStyle: headerOptions.headerTitleStyle
+        }}/>
+        <Stack.Screen name="MakeProfile" component={MakeProfile} options={{
+          title: '내 감 캐릭터 고르기',
+          headerStyle: headerOptions.headerStyle,
+          headerTintColor: headerOptions.headerTintColor,
+          headerTitleStyle: headerOptions.headerTitleStyle
+        }}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

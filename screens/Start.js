@@ -9,7 +9,6 @@ function Start({navigation}) {
   const [loginKey, setLoginKey] = useState(false);
 
   const submitLoginData = () => {
-    console.log(idInput, pwInput)
     let state = false;
     user.some((data)=>{
       if(data.id===idInput && data.pw===pwInput){
@@ -22,7 +21,6 @@ function Start({navigation}) {
       }
     })
     if(state===false){
-      console.log('다시 확인하세요')
       Alert.alert(
         'login error','아이디와 비밀번호를 확인해주세요.',[
           {text: 'ok', onPress:()=>{}}
@@ -31,9 +29,11 @@ function Start({navigation}) {
     }
   }
   useEffect(()=>{
-    console.log(loginKey);
-    if (loginKey){
-      navigation.navigate('감 캐릭터 고르기');
+    if (loginKey===true){
+      navigation.navigate('MakeProfile');
+    }
+    else{
+      navigation.navigate('Start')
     }
   }, [loginKey])
   return (
@@ -61,7 +61,7 @@ function Start({navigation}) {
           <Text style={styles.btnText}>로그인</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => navigation.navigate('회원 가입하기')}
+          onPress={() => navigation.navigate('SignUp')}
           style={styles.submitBtn}>
           <Text style={styles.btnText}>회원가입</Text>
         </TouchableOpacity>

@@ -1,8 +1,7 @@
 import React from "react";
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-native";
-import ProfileHeader from "../components/ProfileHeader";
 
-function ProfileChar({navigation}){
+function MakeProfile({navigation}){
   return(
     <View style={styles.container}>
         <Text>내 감 캐릭터 고르기</Text>
@@ -10,7 +9,7 @@ function ProfileChar({navigation}){
   )
 }
 
-export default ProfileChar;
+export default MakeProfile;
 
 
 const styles = StyleSheet.create({

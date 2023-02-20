@@ -55,11 +55,13 @@ function SignUp({navigation}) {
   })
   const btnClickHandler = () => {
     if(isValid){
-      navigation.navigate('정보 입력하기');
+      // 사용자 정보 POST
+      
+      navigation.navigate('Start');
       return;
     }
     Alert.alert(
-      '오 이런!',message,[
+      'signup error',message,[
         {text: 'ok', onPress:()=>{}}
       ]
     )
