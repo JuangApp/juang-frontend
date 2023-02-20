@@ -24,6 +24,7 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator 
         initialRouteName="Start"
+        // initialRouteName="MakeProfile"
         screenOptions={{
           cardStyle: {backgroundColor: '#ffffff'},
           headerTitleAlign: 'center',
