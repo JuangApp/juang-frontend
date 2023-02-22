@@ -23,8 +23,8 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator 
-        initialRouteName="Start"
-        // initialRouteName="MakeProfile"
+        // initialRouteName="Start"
+        initialRouteName="MakeProfile"
         screenOptions={{
           cardStyle: {backgroundColor: '#ffffff'},
           headerTitleAlign: 'center',
