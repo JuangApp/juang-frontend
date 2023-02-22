@@ -3,28 +3,30 @@ import { Image, View, Text, TextInput, TouchableOpacity, StyleSheet } from "reac
 import {vmin, vmax, vw, vh} from "rxn-units";
 
 function MakeProfile({navigation}){
-  const [choosed, setChoosed] = useState('');
+  const [choosed, setChoosed] = useState({});
   const characters = [
-    'ome',
-    'pear',
-    'kiwi',
-    'tomato',
-    'banana',
-    'fig',
-    'orange',
-    'pineapple',
-    'cherry',
-  ]//임시 array, 나중에 이미지 제목 들어가야함
+    {name: 'ome', src: require('../assets/characters/ome.svg')},
+    {name: 'pear', src: require('../assets/characters/pear.svg')},
+    {name: 'kiwi', src: require('../assets/characters/kiwi.svg')},
+    {name: 'tomato', src: require('../assets/characters/tomato.svg')},
+    {name: 'banana', src: require('../assets/characters/banana.svg')},
+    {name: 'fig', src: require('../assets/characters/fig.svg')},
+    {name: 'orange', src: require('../assets/characters/orange.svg')},
+    {name: 'pineapple', src: require('../assets/characters/pineapple.svg')},
+    {name: 'cherry', src: require('../assets/characters/cherry.svg')},
+   ]//임시 array, 나중에 이미지 제목 들어가야함
+  console.log(characters)
   const charBtnHandler = (character) => {
-    if(choosed!=character){
+    if(choosed.name!=character.name){
       setChoosed(character);
     }
     else{
-      setChoosed('');
+      setChoosed({});
     }
   }
   useEffect(()=>{
-    console.log(choosed)
+    console.log({choosed})
+    console.log(choosed.src)
   }, [choosed])
   const submitBtnHandler = () => {
     navigation.navigate('ChooseColor', {character: choosed})
@@ -32,15 +34,17 @@ function MakeProfile({navigation}){
   return(
     <View style={styles.container}>
         <View style={styles.charContainer}>
-        {characters.map((character, idx) => 
-          <TouchableOpacity
-            key = {idx}
-            style={(character==choosed) ? styles.charActiveBox : styles.charBox}
-            onPress={()=>charBtnHandler(character)}>
-              <Image
-              style={styles.charImg}  
-              source={require(`../assets/characters/${character}.svg`)}/>
-          </TouchableOpacity>
+        {characters.map((character, idx) => {
+          return(
+            <TouchableOpacity
+              key = {idx}
+              style={(character.name==choosed.name) ? styles.charActiveBox : styles.charBox}
+              onPress={()=>charBtnHandler(character)}>
+                <Image
+                style={styles.charImg}  
+                source={character.src}/>
+            </TouchableOpacity>
+          )}
         )}
         </View>
         <View style={styles.btnContainer}>

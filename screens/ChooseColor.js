@@ -5,10 +5,10 @@ import {vmin, vmax, vw, vh} from "rxn-units";
 function ChooseColor({navigation, route}){
   return(
     <View style={styles.container}>
-      <Text>{route.params.character}</Text>
+      <Text>{route.params.character.name}</Text>
       <Image
         style={styles.charImg}
-        source={require(`../assets/characters/${route.params.character}.svg`)}
+        source={route.params.character.src}
       />
     </View>
   )
