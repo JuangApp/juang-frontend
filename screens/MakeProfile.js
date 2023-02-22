@@ -26,6 +26,9 @@ function MakeProfile({navigation}){
   useEffect(()=>{
     console.log(choosed)
   }, [choosed])
+  const submitBtnHandler = () => {
+    navigation.navigate('ChooseColor', {character: choosed})
+  }
   return(
     <View style={styles.container}>
         <View style={styles.charContainer}>
@@ -41,7 +44,9 @@ function MakeProfile({navigation}){
         )}
         </View>
         <View style={styles.btnContainer}>
-          <TouchableOpacity style={styles.charSubmit}>
+          <TouchableOpacity 
+            style={styles.charSubmit}
+            onPress={()=>submitBtnHandler()}>
             <Text style={styles.btnText}>캐릭터 선택하기</Text>
           </TouchableOpacity>
         </View>

@@ -8,6 +8,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Start from "./screens/Start"
 import SignUp from './screens/SignUp';
 import MakeProfile from './screens/MakeProfile';
+import ChooseColor from './screens/ChooseColor';
 
 export default function App() {
   const Stack = createStackNavigator();
@@ -41,6 +42,12 @@ export default function App() {
         }}/>
         <Stack.Screen name="MakeProfile" component={MakeProfile} options={{
           title: '내 감 캐릭터 고르기',
+          headerStyle: headerOptions.headerStyle,
+          headerTintColor: headerOptions.headerTintColor,
+          headerTitleStyle: headerOptions.headerTitleStyle
+        }}/>
+        <Stack.Screen name="ChooseColor" component={ChooseColor} options={{
+          title: '내 색상 고르기',
           headerStyle: headerOptions.headerStyle,
           headerTintColor: headerOptions.headerTintColor,
           headerTitleStyle: headerOptions.headerTitleStyle
